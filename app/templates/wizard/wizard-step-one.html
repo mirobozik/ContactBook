@@ -1,0 +1,24 @@
+<h3>Create new contact / Step 1</h3>
+<p>Step 1 content</p>
+
+<div class="row">
+    <div class="col-lg-6">
+        <form role="form">
+            <div class="form-group">
+                <label for="firstname">Firstname</label>
+                <input type="text" class="form-control" id="firstname" placeholder="Your firstnam" ng-model="firstname"/>
+            </div>
+            <div class="form-group">
+                <label for="lastname">Lastname</label>
+                <input type="text" class="form-control" id="lastname" placeholder="Your lastnam" ng-model="lastname"/>
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="email">
+            </div>
+
+            <button ng-click="nextStep()" class="btn btn-primary">Next <i class="icon-arrow-right"></i></button>
+            <button ng-click="cancelCreationContact()" class="btn btn-default">Cancel <i class="icon-arrow-right"></i></button>
+        </form>
+    </div>
+</div>
