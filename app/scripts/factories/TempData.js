@@ -1,4 +1,5 @@
 /**
+ * TempData object for sharing temporary data in controllers
  * Created by Miro on 25.11.2013.
  */
 define(['angular','modules/app'], function(angular, app){

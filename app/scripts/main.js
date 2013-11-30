@@ -14,7 +14,7 @@ require.config({
 	}
 });
 
-require(['angular','jQuery','routes'], function (angular, jQuery) {
+require(['angular','bootstrap','jQuery','routes'], function (angular, bootstrap, jQuery) {
 	jQuery(function(){
 		angular.bootstrap(document, ['app']);
 	});

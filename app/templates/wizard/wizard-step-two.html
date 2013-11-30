@@ -1,6 +1,135 @@
-<h3>Step 2</h3>
-<p>
-    {{firstname}} {{lastname}}
-</p>
-<button ng-click="previousStep()" class="btn btn-default"><i class="icon-arrow-left"></i> Preview</button>
-<button ng-click="nextStep()" class="btn btn-primary">Next <i class="icon-arrow-right"></i></button>
+<div class="row">
+    <div class="col-sm-12">
+        <form role="form" class="form-horizontal" name="stepTwoForm" novalidate ng-validation-watcher>
+
+            <div class="form-group" ng-show="showCompanyData" ng-class="{'has-error': (stepTwoForm.regNr.$dirty && stepTwoForm.regNr.$invalid)}">
+                <label for="regNr" class="col-sm-2 col-lg-2 control-label">* Reg Nr.</label>
+                <div class="col-sm-10 col-lg-10">
+                    <input type="text" class="form-control" id="regNr" name="regNr" placeholder="" ng-model="currentStep.data.regNr" ng-required="showCompanyData"/>
+                    <span class="help-block" ng-show="stepTwoForm.regNr.$dirty && stepTwoForm.regNr.$invalid">Reg Nr. is required!</span>
+                </div>
+            </div>
+
+            <div class="form-group" ng-show="showCompanyData" ng-class="{'has-error': (stepTwoForm.dic.$dirty && stepTwoForm.dic.$invalid)}">
+                <label for="dic" class="col-sm-2 control-label">* DIC</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="dic" name="dic" placeholder="" ng-model="currentStep.data.dic" ng-required="showCompanyData"/>
+                    <span class="help-block" ng-show="stepTwoForm.dic.$dirty && stepTwoForm.dic.$invalid">DIC is required!</span>
+                </div>
+            </div>
+
+            <div class="form-group" ng-show="showCompanyData">
+                <label for="vatNumber" class="col-sm-2 control-label">Vat Number</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="vatNumber" name="vatNumber" placeholder="" ng-model="currentStep.data.vatNumber" />
+                </div>
+            </div>
+
+            <div class="form-group" ng-show="!showCompanyData">
+                <label for="birthday" class="col-sm-2 control-label">Birthday</label>
+                <div class="col-sm-6">
+                    <input type="date" class="form-control" id="birthday" ng-model="currentStep.data.birthday" />
+                </div>
+            </div>
+
+            <div class="form-group" ng-show="!showCompanyData">
+                <label for="facebook" class="col-sm-2 control-label">Facebook</label>
+                <div class="col-sm-6">
+                    <input type="url" class="form-control" placeholder="Facebook Profile Link" id="facebook" ng-model="currentStep.data.facebook" />
+                </div>
+            </div>
+
+            <div class="form-group" ng-show="!showCompanyData">
+                <label for="googlePlus" class="col-sm-2 control-label">Google Plus</label>
+                <div class="col-sm-6">
+                    <input type="url" class="form-control" placeholder="Google Plus Profile" id="googlePlus" ng-model="currentStep.data.googlePlus" />
+                </div>
+            </div>
+
+            <fieldset ng-show="showCompanyData">
+                <legend>Contact Person</legend>
+                <div class="form-group">
+                    <label for="contactFirstName" class="col-sm-2 control-label">Firstname</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="contactFirstName" placeholder="Enter mobile number" ng-model="currentStep.data.contactFirstName" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactLastName" class="col-sm-2 control-label">LastName</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="contactLastName" placeholder="Enter phone number" ng-model="currentStep.data.contactLastName" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactEmail" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="contactEmail" placeholder="Enter phone number" ng-model="currentStep.data.contactEmail" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactPhone" class="col-sm-2 control-label">Phone</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="contactPhone" placeholder="Enter phone number" ng-model="currentStep.data.contactPhone" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactMobile" class="col-sm-2 control-label">Mobile</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="contactMobile" placeholder="Enter phone number" ng-model="currentStep.data.contactMobile" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactFax" class="col-sm-2 control-label">Fax</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="contactFax" placeholder="Enter phone number" ng-model="currentStep.data.contactFax" />
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Address</legend>
+                <div class="form-group">
+                    <label for="addressStreet" class="col-sm-2 control-label">Street</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="addressStreet" placeholder="Enter phone number" ng-model="currentStep.data.address.street"/>
+                        <span class="help-block" ng-show="stepTwoForm.addressStreet.$dirty && stepTwoForm.addressStreet">Postal Code, City and Country are now mandatory if you entered the street!</span>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{'has-error': (stepTwoForm.addressPostalCode.$dirty && stepTwoForm.addressPostalCode.$invalid)}">
+                    <label for="addressPostalCode" class="col-sm-2 control-label">Postal Code</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="addressPostalCode" name="addressPostalCode" placeholder="123 45" ng-model="currentStep.data.address.postalCode" ng-required="currentStep.data.address.street"/>
+                        <span class="help-block" ng-show="stepTwoForm.addressPostalCode.$dirty && stepTwoForm.addressPostalCode.$invalid">Postal Code is required if you entered the street!</span>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{'has-error': (stepTwoForm.addressCity.$dirty && stepTwoForm.addressCity.$invalid)}">
+                    <label for="addressCity" class="col-sm-2 control-label">City</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="addressCity" name="addressCity" ng-model="currentStep.data.address.city" ng-required="currentStep.data.address.street"/>
+                        <span class="help-block" ng-show="stepTwoForm.addressCity.$dirty && stepTwoForm.addressCity.$invalid">City is required if you entered the street!</span>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{'has-error': (stepTwoForm.addressCountry.$dirty && stepTwoForm.addressCountry.$invalid)}">
+                    <label for="addressCountry" class="col-sm-2 control-label">Country</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" id="addressCountry" name="addressCountry" ng-model="currentStep.data.address.country" ng-required="currentStep.data.address.street">
+                            <option value="Slovakia">Slovakia</option>
+                            <option value="Czech">Czech</option>
+                        </select>
+                        <span class="help-block" ng-show="stepTwoForm.addressCountry.$dirty && stepTwoForm.addressCountry.$invalid">Country is required if you entered the street!</span>
+                    </div>
+                </div>
+            </fieldset>
+
+        </form>
+    </div>
+</div>
+

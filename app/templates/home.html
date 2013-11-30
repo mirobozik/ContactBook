@@ -1,3 +1,33 @@
-<h2>{{message}} {{you}}</h2>
-<input type="text" ng-model="you" name="you" class="form-control"/>
-<p>Home page content!</p>
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Contacts <small>List of contacts</small></h1>
+        <p>
+            <span ng-show="contacts.length==0">Click to button to add new contact <i class="glyphicon glyphicon-hand-right"></i></span>
+            <a href="#/create-partner/step-one" class="btn btn-large btn-primary"><i class="glyphicon glyphicon-plus"></i> Add Contact</a>
+        </p>
+        <table class="table" ng-show="contacts.length>0">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Web</th>
+                    <th>Mobile</th>
+                    <th>Phone</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="contact in contacts">
+                    <td ng-show="contact.companyName">{{contact.companyName}}</td>
+                    <td ng-show="contact.firstName && contact.lastName">{{contact.firstName}} {{contact.lastName}}</td>
+                    <td>{{contact.email}}</td>
+                    <td>{{contact.web}}</td>
+                    <td>{{contact.mobile}}</td>
+                    <td>{{contact.phone}}</td>
+                    <td><button class="btn btn-link" ng-click="deleteItem(contact)"><i class="glyphicon glyphicon-remove"></i> Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

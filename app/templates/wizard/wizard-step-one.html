@@ -1,24 +1,84 @@
-<h3>Create new contact / Step 1</h3>
-<p>Step 1 content</p>
-
 <div class="row">
-    <div class="col-lg-6">
-        <form role="form">
-            <div class="form-group">
-                <label for="firstname">Firstname</label>
-                <input type="text" class="form-control" id="firstname" placeholder="Your firstnam" ng-model="firstname"/>
-            </div>
-            <div class="form-group">
-                <label for="lastname">Lastname</label>
-                <input type="text" class="form-control" id="lastname" placeholder="Your lastnam" ng-model="lastname"/>
-            </div>
-            <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="email">
+    <div class="col-sm-12">
+        <form role="form" class="form-horizontal" name="stepOneForm" novalidate ng-validation-watcher>
+
+            <div class="form-group" ng-class="{'has-error': (stepOneForm.contactEmail.$dirty && stepOneForm.contactEmail.$invalid)}">
+                <label for="contactEmail" class="col-sm-2 control-label">* Email</label>
+                <div class="col-sm-4">
+                    <input type="email" class="form-control" id="contactEmail" name="contactEmail" placeholder="Enter email" ng-model="currentStep.data.email" required/>
+                    <span class="help-block" ng-show="stepOneForm.contactEmail.$dirty && stepOneForm.contactEmail.$invalid">Email is invalid!</span>
+                </div>
             </div>
 
-            <button ng-click="nextStep()" class="btn btn-primary">Next <i class="icon-arrow-right"></i></button>
-            <button ng-click="cancelCreationContact()" class="btn btn-default">Cancel <i class="icon-arrow-right"></i></button>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-6">
+                    <div class="radio-inline">
+                        <label for="contactType_person">
+                            <input type="radio" name="contactTypeOption" id="contactType_person" value="person" ng-model="currentStep.data.contactType"/>
+                            Person
+                        </label>
+                    </div>
+                    <div class="radio-inline">
+                        <label for="contactType_company">
+                            <input type="radio" name="contactTypeOption" id="contactType_company" value="company" ng-model="currentStep.data.contactType"/>
+                            Company
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" ng-show="currentStep.data.contactType==='company'" ng-class="{'has-error': (stepOneForm.companyName.$dirty && stepOneForm.companyName.$invalid)}">
+                <label for="companyName" class="col-sm-2 col-lg-2 control-label">* Company</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="companyName" name="companyName" placeholder="Company Name" ng-model="currentStep.data.companyName" ng-required="currentStep.data.contactType==='company'"/>
+                    <span class="help-block" ng-show="stepOneForm.companyName.$dirty && stepOneForm.companyName.$invalid">Company Name is required!</span>
+                </div>
+            </div>
+
+            <div class="form-group" ng-show="currentStep.data.contactType==='person'" ng-class="{'has-error': (stepOneForm.firstName.$dirty && stepOneForm.firstName.$invalid)}">
+                <label for="firstName" class="col-sm-2 control-label">* First name</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Your first name" ng-model="currentStep.data.firstName" ng-required="currentStep.data.contactType==='person'"/>
+                    <span class="help-block" ng-show="stepOneForm.firstName.$dirty && stepOneForm.firstName.$invalid">First name is required!</span>
+                </div>
+            </div>
+
+            <div class="form-group" ng-show="currentStep.data.contactType==='person'" ng-class="{'has-error': (stepOneForm.lastName.$dirty && stepOneForm.lastName.$invalid)}">
+                <label for="lastName" class="col-sm-2 control-label">* Last name</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Your last name" ng-model="currentStep.data.lastName" ng-required="currentStep.data.contactType==='person'"/>
+                    <span class="help-block" ng-show="stepOneForm.lastName.$dirty && stepOneForm.lastName.$invalid">Last name is required!</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="mobile" class="col-sm-2 control-label">Mobile</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="mobile" placeholder="Enter mobile number" ng-model="currentStep.data.mobile">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone" class="col-sm-2 control-label">Phone</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="phone" placeholder="Enter phone number" ng-model="currentStep.data.phone">
+                </div>
+            </div>
+
+            <div class="form-group" ng-show="contactType=='company'">
+                <label for="fax" class="col-sm-2 control-label">Fax</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="fax" placeholder="Your fax number" ng-model="currentStep.data.fax"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="web" class="col-sm-2 control-label">Web</label>
+                <div class="col-sm-4">
+                    <input type="url" class="form-control" id="web" placeholder="http://yourweb.com/" ng-model="currentStep.data.web"/>
+                </div>
+            </div>
         </form>
     </div>
 </div>
+

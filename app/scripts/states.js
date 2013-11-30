@@ -6,7 +6,7 @@ define(function(){
 		{
 			name: 'home',
 			url: '/',
-			controller: 'HomeCtrl',
+			controller: 'HomeController',
 			templateUrl: 'templates/home.html'
 		},
 		{
@@ -15,27 +15,25 @@ define(function(){
 			templateUrl: 'templates/about.html'
 		},
 		{
-			name: 'create-contact',
-			url: '/create-contact',
-			controller: 'CreateContact',
-			templateUrl: 'templates/create-contact.html'
+			name: 'create-partner',
+			url: '/create-partner',
+			abstract: true,
+			controller: 'PartnerWizardController',
+			templateUrl: 'templates/partner-wizard.html'
 		},
 		{
-			name: 'create-contact.step-one',
+			name: 'create-partner.step-one',
 			url: '/step-one',
-			controller: 'WizardStepOne',
 			templateUrl: 'templates/wizard/wizard-step-one.html'
 		},
 		{
-			name: 'create-contact.step-two',
+			name: 'create-partner.step-two',
 			url: '/step-two',
-			controller: 'WizardStepTwo',
 			templateUrl: 'templates/wizard/wizard-step-two.html'
 		},
 		{
-			name: 'create-contact.summary',
+			name: 'create-partner.summary',
 			url: '/summary',
-			controller: 'WizardStepThree',
 			templateUrl: 'templates/wizard/wizard-step-three.html'
 		}
 	];

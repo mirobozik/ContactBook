@@ -5,11 +5,9 @@ define([
 	'angular',
 	'modules/app',
 	'states',
-	'controllers/HomeCtrl',
-	'controllers/CreateContact',
-	'controllers/WizardStepOne',
-	'controllers/WizardStepTwo',
-	'controllers/WizardStepThree'],
+	'controllers/HomeController',
+	'controllers/PartnerWizardController'
+	],
 	function(angular, app, states){
 		return app.config(['$stateProvider', function ($stateProvider) {
 			angular.forEach(states, function(val, key){

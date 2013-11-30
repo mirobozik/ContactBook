@@ -1,16 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Angular Demo App</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Angular Test Application">
+    <meta name="author" content="Miroslav Božík">
+    <title>ContactBook - Angular Test Application</title>
     <link rel="stylesheet" href="scripts/vendor/bootstrap/dist/css/bootstrap.min.css"/>
+    <style>
+        body {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        footer {
+            padding: 30px 0;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Angular Demo App</h1>
-        <a href="#/" title="Home">Home</a>
-        <a href="#/create-contact" title="New Contact">New Contact</a>
-        <a href="#/about" title="About Page">About</a>
-        <div ui-view></div>
+        <header>
+            <!-- Static navbar -->
+            <div class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#/">ContactBook</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#/" title="Add Contact">List</a></li>
+                        <li><a href="#/create-partner/step-one" title="Add Contact">Add Contact</a></li>
+                        <li><a href="#/about" title="About Page">About</a></li>
+                    </ul>
+
+                    <p class="navbar-text pull-right">Created By <a href="http://mirobozik.sk/">Miroslav Božík</a>.</p>
+                </div><!--/.nav-collapse -->
+            </div>
+        </header>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div ui-view></div>
+            </div>
+        </div>
+
     </div>
     <script src="scripts/vendor/requirejs/require.js" data-main="scripts/main"></script>
 </body>

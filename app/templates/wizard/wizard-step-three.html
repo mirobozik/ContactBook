@@ -1,6 +1,41 @@
-<h3>Step 3</h3>
-<p>
-    Step 3 content
-</p>
-<a href="#/step-2" class="btn btn-default"><i class="icon-arrow-left"></i> Preview</a>
-<a href="#" class="btn btn-primary">Submit</a>
+<div class="row">
+    <div class="col-lg-12">
+        <h3 ng-show="!contact.companyName">{{contact.firstName}} {{contact.lastName}}</h3>
+        <h3 ng-show="contact.companyName">{{contact.companyName}}</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div ng-show="contact.companyName">
+            <p><b>Reg Nr.:</b> {{contact.regNr}}</p>
+            <p><b>Vat Number:</b> {{contact.vatNumber}}</p>
+            <p><b>DIC:</b> {{contact.dic}}</p>
+        </div>
+        <p><b>Email:</b> {{contact.email}}</p>
+        <p><b>Mobile:</b> {{contact.mobile}}</p>
+        <p><b>Phone:</b> {{contact.phone}}</p>
+        <p><b>Web:</b> {{contact.web}}</p>
+
+        <div ng-show="!contact.companyName">
+            <p><b>Birthday:</b> {{contact.birthday}}</p>
+            <p><b>Facebook:</b> {{contact.facebook}}</p>
+            <p><b>Google Plus:</b> {{contact.googlePlus}}</p>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div ng-show="contact.companyName">
+            <h4>Contact Person:</h4>
+            <p>{{contact.contact.firstName}} {{contact.contact.lastName}}</p>
+            <p><b>Email:</b> {{contact.contact.email}}</p>
+            <p><b>Phone:</b> {{contact.contact.phone}}</p>
+            <p><b>Mobile:</b> {{contact.contact.mobile}}</p>
+            <p><b>Fax:</b> {{contact.contact.fax}}</p>
+        </div>
+        <div ng-show="contact.address.street">
+            <h4>Address:</h4>
+            <p>{{contact.address.street}},</p>
+            <p>{{contact.address.city}} {{contact.address.postalCode}},</p>
+            <p>{{contact.address.country}}</p>
+        </div>
+    </div>
+</div>

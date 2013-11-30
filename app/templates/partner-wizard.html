@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-lg-3">
+        <h3>{{partnerWizard.title}}</h3>
+        <ul class="nav nav-pills nav-stacked">
+            <li ng-class="{active: (step.index === currentStep.index)}" ng-repeat="step in partnerWizard.getSteps()">
+                <a href="{{step.url}}"><i class="glyphicon glyphicon-ok" ng-show="step.isValid"></i> {{step.title}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-lg-9">
+        <div class="panel panel-default" ng-show="currentStep!==undefined">
+            <div class="panel-heading">
+                <h2><small>{{partnerWizard.title}}</small> / {{currentStep.title}}</h2>
+                <blockquote>{{currentStep.description}}</blockquote>
+            </div>
+            <div class="panel-body" ui-view></div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <button ng-show="!partnerWizard.isCurrentStepFirst()" ng-click="back()" class="btn btn-default"><i class="glyphicon glyphicon-arrow-left"></i> Back</button>
+                    </div>
+                    <div class="col-lg-2">
+                        <button ng-click="cancel()" class="btn btn-default"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
+                    </div>
+                    <div class="col-lg-5">
+                        <button ng-show="!partnerWizard.isCurrentStepLast()" ng-disabled="!currentStep.isValid" ng-click="next()" class="btn btn-primary pull-right">Next <i class="glyphicon glyphicon-arrow-right"></i></button>
+                        <button ng-show="partnerWizard.isCurrentStepLast()" class="btn btn-primary pull-right" ng-disabled="!partnerWizard.isValid()" ng-click="submit()">Submit <i class="glyphicon glyphicon-check"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
